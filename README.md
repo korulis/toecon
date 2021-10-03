@@ -8,3 +8,4 @@ It is about taccon and ticcon deployment.
 - It has reference to [taccon](https://github.com/korulis/taccon) flask web api
 - Run the whole cluster `docker-compose up --build`
 - Find the app at `http://localhost:4000/`
+- Can use env var `TACCON_API_TEST_DELAY` (in secconds) to play with backend response delays
