@@ -1,0 +1,3 @@
+[submodule "ticcon"]
+	path = ticcon
+	url = git@github.com:korulis/ticcon.git
