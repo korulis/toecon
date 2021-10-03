@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  tictactoe-db:
+    container_name: tictactoe-db-composed
+    image: postgres:10.13-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=pass1234
+
+  tictactoe-nginx:
+    container_name: tictactoe-nginx-composed
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    depends_on:
+      - taccon
+      - ticcon
+    restart: always
+    ports:
+      - 4000:80
+
+  taccon:
+    container_name: taccon-composed
+    build:
+      dockerfile: Dockerfile
+      context: "./taccon"
+    depends_on:
+      - tictactoe-db
+    environment:
+      - TACCON_DB_USER=postgres
+      - TACCON_DB_PASS=pass1234
+      - TACCON_DB_HOST=tictactoe-db
+      - TACCON_DB_PORT=5432
+      - TACCON_DB_NAME=postgres
+      - TACCON_API_TEST_DELAY=0
+
+  ticcon:
+    container_name: ticcon-composed
+    build:
+      dockerfile: Dockerfile
+      context: ./ticcon
+    depends_on:
+      - tictactoe-db
+      - taccon
+    environment:
+      - REACT_APP_WEB_API=http://localhost:4000/api
