@@ -7,4 +7,4 @@ It is about taccon and ticcon deployment.
 - It has reference to [ticcon](https://github.com/korulis/ticcon) react app
 - It has reference to [taccon](https://github.com/korulis/taccon) flask web api
 - Run the whole cluster `docker-compose up --build`
-- Stop cluster `docker-compose down`
+- Find the app at `http://localhost:4000/`
