@@ -1,3 +1,6 @@
 [submodule "ticcon"]
 	path = ticcon
 	url = git@github.com:korulis/ticcon.git
+[submodule "taccon"]
+	path = taccon
+	url = git@github.com:korulis/taccon.git
